@@ -10,6 +10,8 @@
  *  - redirect opsdots.ro → www.opsdots.ro (domeniul principal)
  */
 
+import { handleContact, handleConfig } from "./contact.js";
+
 const APEX_HOST = "opsdots.ro";
 const CANONICAL_HOST = "www.opsdots.ro";
 
@@ -83,6 +85,10 @@ export default {
         url.hostname = CANONICAL_HOST;
         url.protocol = "https:";
         res = Response.redirect(url.toString(), 301);
+      } else if (url.pathname === "/api/contact") {
+        res = await handleContact(request, env, ctx, reqId);
+      } else if (url.pathname === "/api/config") {
+        res = handleConfig(env);
       } else if (url.pathname === "/healthz") {
         res = new Response(JSON.stringify({ status: "ok", service: CANONICAL_HOST, time: new Date().toISOString() }), {
           headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" },

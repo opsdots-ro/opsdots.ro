@@ -17,6 +17,7 @@ public/                 ← tot ce e servit public (site-ul)
   robots.txt, sitemap.xml, llms.txt, site.webmanifest, favicon.svg
   _headers, _redirects  headere și redirecționări (aplicate de Cloudflare)
 src/worker.js           Worker: servește public/, loghează fiecare cerere, redirect non-www → www, /healthz
+src/contact.js          /api/contact: formularul de contact → email prin Resend (+ anti-spam)
 wrangler.jsonc          configurația Cloudflare (assets, domenii, observability)
 package.json            comenzi: npm run dev / deploy / logs
 ```
@@ -98,6 +99,42 @@ Pentru mai mult trafic scazi `head_sampling_rate` (ex. `0.2` = 20%).
 
 ---
 
+## Formular de contact (Resend)
+
+Formularul trimite datele la `/api/contact` (Worker). Worker-ul validează mesajul și îl trimite pe email prin **Resend**,
+cu `Reply-To` setat pe adresa vizitatorului, deci îi răspunzi direct cu „Reply”.
+Dacă serverul nu e disponibil (de exemplu local, cu dublu-click), formularul deschide aplicația de email ca rezervă.
+
+### Configurare (o singură dată)
+
+1. **resend.com → Domains → Add Domain** → `opsdots.ro`, regiunea **EU (Ireland)**.
+   Adaugă în Cloudflare DNS înregistrările afișate (MX și TXT pentru `send`, TXT `resend._domainkey`), cu proxy-ul **oprit** (nor gri).
+   Apasă **Verify** și așteaptă statusul *Verified*, de obicei câteva minute.
+   *Opțional, recomandat:* un TXT `_dmarc` cu `v=DMARC1; p=none;`, dacă nu ai deja unul.
+2. **resend.com → API Keys → Create** → permisiune *Sending access*, domeniul `opsdots.ro`. Copiază cheia `re_...`.
+3. **Cloudflare → Workers & Pages → opsdots-ro → Settings → Variables and Secrets → Add**, tip **Secret**:
+   - `RESEND_API_KEY` = cheia de la pasul 2
+   - `CONTACT_TO` = adresa unde vrei mesajele (mai multe adrese se separă prin virgulă)
+4. Expeditorul e setat în `wrangler.jsonc` → `CONTACT_FROM` (implicit `website@opsdots.ro`). Trebuie să fie pe domeniul verificat.
+5. Redeploy: orice `git push` sau *Deployments → Retry*. Test: trimite un mesaj de pe site.
+
+### Anti-spam (deja activ)
+
+Câmp-capcană invizibil, timp minim de completare de 3 secunde, maximum 5 trimiteri pe minut per IP, verificarea originii și limită de mărime.
+**Turnstile (opțional, dacă apare spam):** Cloudflare → Turnstile → Add widget → `www.opsdots.ro`, mod *Managed*.
+- *Site Key* → în `wrangler.jsonc` la `TURNSTILE_SITE_KEY` (e publică)
+- *Secret Key* → secret `TURNSTILE_SECRET` în Dashboard
+
+Widget-ul apare automat în formular, iar verificarea devine obligatorie.
+
+### Depanare
+
+În *Observability → Logs* caută `event = "contact_sent"` (trimis OK, cu `resend_id`) sau `event = "contact_rejected"` (câmpul `reason`):
+`not_configured` (lipsește un secret), `resend_error` (vezi `resend_error`, de obicei domeniu neverificat), `rate_limited`, `invalid_fields`, `turnstile_failed`.
+Mesajele trimise apar și în resend.com → *Emails*.
+
+Test local: copiază `.dev.vars.example` → `.dev.vars`, completează și rulează `npm run dev`.
+
 ## SEO și crawlere AI
 
 - `robots.txt` permite Google, Bing și crawlerele AI; `llms.txt` oferă un rezumat pentru LLM-uri; datele structurate sunt în fiecare pagină.
@@ -114,4 +151,3 @@ Română la `/`, engleză la `/en/`. Când schimbi un text, schimbă-l în **amb
 - Verifică cifrele (99.9%, 15 min P1, audit 10 zile) — sunt angajamente comerciale.
 - Linkuri LinkedIn etc. în footer și în JSON-LD (`"sameAs"`).
 - Actualizează `<lastmod>` în `public/sitemap.xml` la modificări de conținut.
-- Formular de contact cu trimitere directă (Resend + Turnstile) — în lucru.

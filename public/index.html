@@ -397,9 +397,12 @@
             <option>Altceva</option>
           </select>
         </label>
+        <label class="hp" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"></label>
         <label class="full">La ce lucrezi?<textarea name="message" required></textarea></label>
         <button class="btn btn-primary" type="submit">Trimite mesajul <span class="arrow">→</span></button>
-        <p class="form-note">Formularul deschide aplicația ta de email cu mesajul precompletat. Datele nu sunt stocate pe site.</p>
+        <div id="ts" class="full"></div>
+        <p class="form-status full" role="status" aria-live="polite"></p>
+        <p class="form-note">Mesajul ajunge direct la echipa OpsDots. Folosim datele doar pentru a-ți răspunde — detalii în <a href="privacy.html">politica de confidențialitate</a>.</p>
       </form>
     </div>
   </div>

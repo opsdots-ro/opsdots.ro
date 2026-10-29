@@ -386,9 +386,12 @@
             <option>Something else</option>
           </select>
         </label>
+        <label class="hp" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"></label>
         <label class="full">What are you working on?<textarea name="message" required></textarea></label>
         <button class="btn btn-primary" type="submit">Send message <span class="arrow">→</span></button>
-        <p class="form-note">The form opens your email app with the message pre-filled. No data is stored on this site.</p>
+        <div id="ts" class="full"></div>
+        <p class="form-status full" role="status" aria-live="polite"></p>
+        <p class="form-note">Your message goes straight to the OpsDots team. We only use your data to reply — see our <a href="privacy.html">privacy policy</a>.</p>
       </form>
     </div>
   </div>

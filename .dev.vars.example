@@ -1,0 +1,4 @@
+# Copiază acest fișier ca .dev.vars (nu se urcă în git) pentru testare locală cu `npm run dev`
+RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxxxxxx
+CONTACT_TO=adresa-ta@exemplu.ro
+# TURNSTILE_SECRET=1x0000000000000000000000000000000AA   # cheie de test Cloudflare care trece mereu
