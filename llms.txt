@@ -1,0 +1,32 @@
+# OpsDots
+
+> OpsDots (opsdots.ro) este o companie de servicii IT din București, România, specializată în administrare baze de date (DBA), platforme Kubernetes și administrare servere Linux. Lucrează cu companii din România și din Uniunea Europeană prin managed services 24/7, proiecte, audit cu preț fix, extindere de echipă și training.
+
+OpsDots (opsdots.ro) is a Romanian IT services company based in Bucharest, specialised in database administration (DBA), Kubernetes platform engineering and Linux server administration for companies in Romania and the EU.
+
+## Servicii / Services
+
+- **Administrare baze de date (DBA)**: PostgreSQL, MySQL, Percona Server for MySQL, Percona XtraDB Cluster, MariaDB, MongoDB, Redis. Optimizare performanță, replicare și înaltă disponibilitate (Patroni, Percona XtraDB Cluster, Galera, MySQL Group Replication), backup și PITR cu teste de restore, upgrade-uri de versiune, migrări (ex. MySQL → Percona Server sau PostgreSQL).
+- **Platforme Kubernetes**: design, implementare, upgrade și operare clustere on-premise (bare metal, VMware, Proxmox), cloud (EKS, AKS, GKE) și hibrid, inclusiv air-gapped. GitOps (ArgoCD), Helm, CI/CD, observabilitate (Prometheus, Grafana), OpenShift și Rancher.
+- **Administrare servere Linux**: RHEL, Rocky Linux, Ubuntu, Debian. Hardening CIS, patch management, automatizare cu Ansible și Terraform, virtualizare (VMware, Proxmox, KVM), troubleshooting.
+- **Securitate și conformitate**: policy-as-code (Kyverno), HashiCorp Vault, gestiune secrete și certificate, imagini scanate și semnate, pregătire audit NIS2, DORA, ISO 27001, GDPR.
+- **Enablement și training**: evaluare de maturitate DevOps/DBA, lucru în pereche, workshop-uri, runbook-uri.
+- **Managed services 24/7**: monitorizare permanentă, inginer de gardă, SLA, raport lunar.
+- **Audit cu preț fix**: 10 zile lucrătoare, acces read-only, raport cu constatări prioritizate după risc și plan de remediere.
+
+## Industrii
+
+Financiar-bancar, e-commerce și retail, sănătate, telecom și energie, software/SaaS.
+
+## Contact
+
+- Website: https://opsdots.ro/
+- Email: contact@opsdots.ro
+- Locație: București, România
+- Prima discuție tehnică (30 min) este gratuită.
+
+## Pagini / Pages
+
+- [Pagina principală (română)](https://opsdots.ro/): servicii, modele de colaborare, audit, întrebări frecvente, contact
+- [Homepage (English)](https://opsdots.ro/en/): services, engagement models, audit, FAQ, contact
+- [Politica de confidențialitate](https://opsdots.ro/privacy.html) · [Privacy policy](https://opsdots.ro/en/privacy.html)

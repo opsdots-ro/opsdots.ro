@@ -1,0 +1,14 @@
+{
+  "name": "OpsDots — Baze de date, Kubernetes și Linux",
+  "short_name": "OpsDots",
+  "start_url": "/",
+  "display": "browser",
+  "lang": "ro",
+  "background_color": "#FFFFFF",
+  "theme_color": "#0098C3",
+  "icons": [
+    { "src": "/favicon.svg", "type": "image/svg+xml", "sizes": "any" },
+    { "src": "/assets/apple-touch-icon.png", "type": "image/png", "sizes": "180x180" },
+    { "src": "/assets/icon-512.png", "type": "image/png", "sizes": "512x512" }
+  ]
+}

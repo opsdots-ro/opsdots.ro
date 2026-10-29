@@ -1,0 +1,4 @@
+# Cloudflare Pages redirects
+/home        /  301
+/contact     /#contact  301
+/servicii    /#servicii 301

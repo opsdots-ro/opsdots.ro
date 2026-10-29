@@ -1,246 +1,433 @@
-<!DOCTYPE HTML>
-<!--
-	My Website
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>My Website</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
-		<!-- Wrapper -->
-			<div id="wrapper">
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OpsDots — Administrare baze de date, Kubernetes și Linux | DBA & DevOps România</title>
+<meta name="description" content="OpsDots oferă administrare baze de date (PostgreSQL, MySQL, Percona, MariaDB, MongoDB), platforme Kubernetes și administrare Linux pentru companii din România și UE. Suport 24/7, audit, migrare și managed services.">
+<meta name="keywords" content="Percona, MySQL DBA, DBA România, administrare baze de date, PostgreSQL consultant, Kubernetes România, administrare Linux, managed services, DevOps București, SRE, migrare baze de date, audit Kubernetes">
+<meta name="author" content="OpsDots">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://opsdots.ro/">
+<link rel="alternate" hreflang="ro" href="https://opsdots.ro/">
+<link rel="alternate" hreflang="en" href="https://opsdots.ro/en/">
+<link rel="alternate" hreflang="x-default" href="https://opsdots.ro/">
+<meta name="theme-color" content="#0098C3">
 
-				<!-- Header -->
-					<header id="header">
-						<div class="inner">
+<!-- Open Graph / social -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="OpsDots">
+<meta property="og:locale" content="ro_RO">
+<meta property="og:locale:alternate" content="en_GB">
+<meta property="og:url" content="https://opsdots.ro/">
+<meta property="og:title" content="OpsDots — Baze de date, Kubernetes și Linux, operate de seniori">
+<meta property="og:description" content="Administrare baze de date, platforme Kubernetes și servere Linux. Proiectăm, securizăm și operăm infrastructura critică a afacerii tale.">
+<meta property="og:image" content="https://opsdots.ro/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="OpsDots — Baze de date, Kubernetes și Linux">
+<meta name="twitter:description" content="DBA, platform engineering și administrare Linux pentru companii din România și UE.">
+<meta name="twitter:image" content="https://opsdots.ro/assets/og-image.png">
 
-							<!-- Logo -->
-								<a href="index.html" class="logo">
-									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">My Website</span>
-								</a>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="alternate" type="text/plain" title="LLM summary" href="llms.txt">
 
-							<!-- Nav -->
-								<nav>
-									<ul>
-										<li><a href="#menu">Menu</a></li>
-									</ul>
-								</nav>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-						</div>
-					</header>
+<!-- Date structurate pentru Google, Bing, ChatGPT, Claude, Perplexity -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://opsdots.ro/#organization",
+      "name": "OpsDots",
+      "alternateName": "opsdots.ro",
+      "url": "https://opsdots.ro/",
+      "logo": "https://opsdots.ro/favicon.svg",
+      "image": "https://opsdots.ro/assets/og-image.png",
+      "description": "Companie de servicii IT din România specializată în administrare baze de date (DBA), platforme Kubernetes și administrare servere Linux: consultanță, audit, migrare și managed services 24/7.",
+      "email": "contact@opsdots.ro",
+      "address": { "@type": "PostalAddress", "addressLocality": "București", "addressCountry": "RO" },
+      "areaServed": [ { "@type": "Country", "name": "România" }, { "@type": "Place", "name": "Uniunea Europeană" } ],
+      "knowsAbout": ["PostgreSQL","MySQL","MariaDB","Percona Server for MySQL","Percona XtraDB Cluster","MongoDB","Redis","Kubernetes","OpenShift","Rancher","Docker","Linux","Red Hat Enterprise Linux","Ubuntu","Debian","Ansible","Terraform","ArgoCD","Prometheus","Grafana","High Availability","Disaster Recovery","Backup","Database performance tuning","Site Reliability Engineering"],
+      "slogan": "Operăm infrastructura, împreună.",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Servicii OpsDots",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Administrare baze de date (DBA)", "description": "Administrare, optimizare performanță, backup, replicare și înaltă disponibilitate pentru PostgreSQL, MySQL, Percona Server, MariaDB și MongoDB." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Platforme Kubernetes", "description": "Proiectare, implementare, upgrade și operare clustere Kubernetes on-premise, cloud sau hibrid, cu GitOps, observabilitate și securitate." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Administrare servere Linux", "description": "Administrare, hardening, patching, automatizare cu Ansible și monitorizare pentru RHEL, Rocky, Ubuntu și Debian." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Securitate și conformitate infrastructură", "description": "Policy-as-code, gestiunea secretelor, lanț de livrare verificat și pregătire pentru audit NIS2, DORA, ISO 27001 și GDPR." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Enablement și training DevOps/DBA", "description": "Evaluare de maturitate, lucru în pereche pe probleme reale și workshop-uri PostgreSQL, Kubernetes și Linux." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Managed services 24/7", "description": "Monitorizare și intervenție 24/7 cu SLA pentru baze de date, Kubernetes și Linux." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Audit infrastructură", "description": "Audit read-only de 10 zile lucrătoare, cu preț fix, pentru baze de date, clustere Kubernetes și servere Linux, cu raport de recomandări prioritizate." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Migrare și modernizare", "description": "Migrare baze de date (ex. MySQL la Percona Server sau PostgreSQL), migrare aplicații pe Kubernetes, upgrade-uri de versiune cu downtime minim." } }
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://opsdots.ro/#website",
+      "url": "https://opsdots.ro/",
+      "name": "OpsDots",
+      "inLanguage": ["ro-RO","en"],
+      "publisher": { "@id": "https://opsdots.ro/#organization" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://opsdots.ro/#faq",
+      "mainEntity": [
+        { "@type": "Question", "name": "Ce servicii oferă OpsDots?", "acceptedAnswer": { "@type": "Answer", "text": "OpsDots oferă administrare baze de date (DBA), proiectarea și operarea platformelor Kubernetes și administrare servere Linux, sub formă de proiecte, audit cu preț fix, extindere de echipă sau managed services 24/7." } },
+        { "@type": "Question", "name": "Ce baze de date administrează OpsDots?", "acceptedAnswer": { "@type": "Answer", "text": "PostgreSQL, MySQL, Percona Server for MySQL, MariaDB, MongoDB și Redis, inclusiv replicare, clustere de înaltă disponibilitate (Patroni, Percona XtraDB Cluster, Galera, MySQL Group Replication), backup și disaster recovery." } },
+        { "@type": "Question", "name": "Lucrați cu Kubernetes on-premise sau doar în cloud?", "acceptedAnswer": { "@type": "Answer", "text": "Ambele. OpsDots construiește și operează clustere Kubernetes on-premise (bare metal, VMware, Proxmox), în cloud (EKS, AKS, GKE) și hibrid, inclusiv medii izolate de internet (air-gapped)." } },
+        { "@type": "Question", "name": "Oferiți suport 24/7?", "acceptedAnswer": { "@type": "Answer", "text": "Da. Prin pachetul de managed services, sistemele sunt monitorizate permanent, iar incidentele critice sunt preluate de un inginer de gardă conform SLA-ului agreat." } },
+        { "@type": "Question", "name": "Unde activează OpsDots?", "acceptedAnswer": { "@type": "Answer", "text": "OpsDots are sediul în România și lucrează cu clienți din România și din Uniunea Europeană, la distanță sau la sediul clientului." } },
+        { "@type": "Question", "name": "Cum începe o colaborare?", "acceptedAnswer": { "@type": "Answer", "text": "Cu o discuție tehnică gratuită de 30 de minute, urmată de o propunere: un audit cu durată fixă, un proiect cu livrabile clare sau un contract de managed services." } }
+      ]
+    }
+  ]
+}
+</script>
 
-				<!-- Menu -->
-					<nav id="menu">
-						<h2>Menu</h2>
-						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li><a href="generic.html">Ipsum veroeros</a></li>
-							<li><a href="generic.html">Tempus etiam</a></li>
-							<li><a href="generic.html">Consequat dolor</a></li>
-							<li><a href="elements.html">Elements</a></li>
-						</ul>
-					</nav>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Sari la conținut</a>
 
-				<!-- Main -->
-					<div id="main">
-						<div class="inner">
-							<header>
-								<h1>This is Phantom, a free, fully responsive site<br />
-								template designed by <a href="http://html5up.net">HTML5 UP</a>.</h1>
-								<p>Etiam quis viverra lorem, in semper lorem. Sed nisl arcu euismod sit amet nisi euismod sed cursus arcu elementum ipsum arcu vivamus quis venenatis orci lorem ipsum et magna feugiat veroeros aliquam. Lorem ipsum dolor sit amet nullam dolore.</p>
-							</header>
-							<section class="tiles">
-								<article class="style1">
-									<span class="image">
-										<img src="images/pic01.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Magna</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style2">
-									<span class="image">
-										<img src="images/pic02.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Lorem</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style3">
-									<span class="image">
-										<img src="images/pic03.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Feugiat</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style4">
-									<span class="image">
-										<img src="images/pic04.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Tempus</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style5">
-									<span class="image">
-										<img src="images/pic05.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Aliquam</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style6">
-									<span class="image">
-										<img src="images/pic06.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Veroeros</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style2">
-									<span class="image">
-										<img src="images/pic07.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Ipsum</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style3">
-									<span class="image">
-										<img src="images/pic08.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Dolor</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style1">
-									<span class="image">
-										<img src="images/pic09.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Nullam</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style5">
-									<span class="image">
-										<img src="images/pic10.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Ultricies</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style6">
-									<span class="image">
-										<img src="images/pic11.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Dictum</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style4">
-									<span class="image">
-										<img src="images/pic12.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Pretium</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-							</section>
-						</div>
-					</div>
+<header class="header">
+  <nav class="container nav" aria-label="Navigare principală">
+    <a href="index.html" class="logo" aria-label="OpsDots — pagina principală">
+      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><circle cx="7" cy="17" r="5" fill="#0098C3"/><circle cx="17" cy="17" r="5" fill="#0B2532"/><circle cx="27" cy="17" r="5" fill="#0098C3" opacity=".55"/></svg>
+      <span>ops<b>dots</b></span>
+    </a>
+    <ul class="menu" id="menu">
+      <li><a href="#servicii">Servicii</a></li>
+      <li><a href="#colaborare">Colaborare</a></li>
+      <li><a href="#audit">Audit</a></li>
+      <li><a href="#de-ce">De ce noi</a></li>
+      <li><a href="#faq">Întrebări</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="lang" aria-label="Limba"><a href="index.html" hreflang="ro" lang="ro" aria-current="page">RO</a><a href="en/index.html" hreflang="en" lang="en">EN</a></div>
+      <a href="#contact" class="btn btn-primary">Hai să vorbim <span class="arrow">→</span></a>
+      <button class="burger" aria-label="Deschide meniul" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
 
-				<!-- Footer -->
-					<footer id="footer">
-						<div class="inner">
-							<section>
-								<h2>Get in touch</h2>
-								<form method="post" action="#">
-									<div class="fields">
-										<div class="field half">
-											<input type="text" name="name" id="name" placeholder="Name" />
-										</div>
-										<div class="field half">
-											<input type="email" name="email" id="email" placeholder="Email" />
-										</div>
-										<div class="field">
-											<textarea name="message" id="message" placeholder="Message"></textarea>
-										</div>
-									</div>
-									<ul class="actions">
-										<li><input type="submit" value="Send" class="primary" /></li>
-									</ul>
-								</form>
-							</section>
-							<section>
-								<h2>Follow</h2>
-								<ul class="icons">
-									<li><a href="#" class="icon brands style2 fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="#" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="#" class="icon brands style2 fa-dribbble"><span class="label">Dribbble</span></a></li>
-									<li><a href="#" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
-									<li><a href="#" class="icon brands style2 fa-500px"><span class="label">500px</span></a></li>
-									<li><a href="#" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
-									<li><a href="#" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
-								</ul>
-							</section>
-							<ul class="copyright">
-								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-							</ul>
-						</div>
-					</footer>
+<main id="main">
 
-			</div>
+<!-- HERO -->
+<section class="hero" aria-labelledby="hero-title">
+  <svg class="dots-bg" viewBox="0 0 600 600" aria-hidden="true">
+    <defs><pattern id="d" width="30" height="30" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="2.4" fill="#0098C3" opacity=".22"/></pattern>
+    <radialGradient id="f"><stop offset="0" stop-color="#fff" stop-opacity="1"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+    <mask id="m"><rect width="600" height="600" fill="url(#f)"/></mask></defs>
+    <rect width="600" height="600" fill="url(#d)" mask="url(#m)"/>
+  </svg>
+  <div class="container hero-grid">
+    <div class="reveal">
+      <span class="eyebrow">Baze de date · Kubernetes · Linux</span>
+      <h1 id="hero-title">Operăm infrastructura critică, <em>împreună.</em></h1>
+      <p class="lead">OpsDots proiectează, securizează și administrează bazele de date, platformele Kubernetes și serverele Linux pe care rulează afacerea ta — cu ingineri seniori, procese clare și suport 24/7.</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-primary">Discută cu un specialist <span class="arrow">→</span></a>
+        <a href="#servicii" class="btn btn-ghost">Ce facem</a>
+      </div>
+      <div class="hero-badges" aria-label="Tehnologii principale">
+        <span class="chip">PostgreSQL</span><span class="chip">MySQL</span><span class="chip">Percona</span><span class="chip">Kubernetes</span><span class="chip">RHEL / Ubuntu</span>
+      </div>
+    </div>
+    <div class="terminal reveal" role="img" aria-label="Terminal ilustrativ: starea bazelor de date, a clusterului Kubernetes, a serverelor Linux și a backup-urilor">
+      <div class="term-bar"><i></i><i></i><i></i></div>
+<div class="term-body"><span class="p">ops@dots:~$</span> opsdotsctl status --env prod
+<span class="ok">✔</span> postgresql  pg-prod    3/3 healthy · lag 0
+<span class="ok">✔</span> kubernetes  k8s-prod   6/6 Ready · v1.34
+<span class="ok">✔</span> linux       fleet      42/42 patched
+<span class="ok">✔</span> backup      PITR 14 zile · restore testat
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+<span class="p">ops@dots:~$</span> opsdotsctl incidents --last 30d
+<span class="ok">✔</span> 0 critice · 2 minore rezolvate
+<span class="c"># totul e verde. poți dormi liniștit.</span>
 
-	</body>
+<span class="p">ops@dots:~$</span> <span class="cursor">▋</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="container">
+    <div class="stats-grid reveal">
+      <div class="stat"><strong>24/7</strong><span>Monitorizare</span><small>inginer de gardă pe incidente critice</small></div>
+      <div class="stat"><strong>99.9%</strong><span>Disponibilitate țintă</span><small>arhitecturi HA și DR testate</small></div>
+      <div class="stat"><strong>15 min</strong><span>Timp de răspuns P1</span><small>conform SLA-ului agreat</small></div>
+      <div class="stat"><strong>100%</strong><span>Ingineri seniori</span><small>experiență reală în producție</small></div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICII -->
+<section class="section" id="servicii" aria-labelledby="serv-title">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><span class="eyebrow">Servicii</span><h2 id="serv-title">Expertiză profundă acolo unde contează: date, containere, sisteme.</h2></div>
+      <p>Inginerie practică, nu rapoarte de sertar. Intrăm direct în sistemele pe care rulează afacerea ta și rămânem acolo până când merg ireproșabil.</p>
+    </div>
+    <div class="cards">
+      <article class="card reveal" id="dba">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></div>
+        <h3>Administrare baze de date (DBA)</h3>
+        <p>DBA dedicat sau la cerere pentru bazele de date de producție: performanță, siguranța datelor și disponibilitate.</p>
+        <ul>
+          <li>Optimizare query-uri, indecși și configurare</li>
+          <li>Replicare și clustere HA (Patroni, Percona XtraDB Cluster, Galera, MySQL Group Replication)</li>
+          <li>Backup (pgBackRest, Percona XtraBackup), PITR și teste periodice de restore</li>
+          <li>Upgrade-uri de versiune și migrări (MySQL → Percona / PostgreSQL)</li>
+        </ul>
+        <div class="tags">postgresql · mysql · percona · mariadb · mongodb · redis</div>
+      </article>
+      <article class="card reveal" id="kubernetes">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 2l8.5 4.5 2 9.2L16.6 22H7.4l-5.9-6.3 2-9.2z"/><circle cx="12" cy="12" r="3"/><path d="M12 5v4M12 15v4M5.5 9.5l3.6 1.5M14.9 13l3.6 1.5M18.5 9.5l-3.6 1.5M9.1 13l-3.6 1.5"/></svg></div>
+        <h3>Platforme Kubernetes</h3>
+        <p>Construim și operăm clustere Kubernetes on-premise, în cloud sau hibrid — GitOps by default, upgrade-uri tratate ca inginerie.</p>
+        <ul>
+          <li>Design și implementare clustere de producție</li>
+          <li>GitOps, CI/CD și pipeline-uri de livrare</li>
+          <li>Securitate: RBAC, policy-as-code, secrete, imagini semnate</li>
+          <li>Observabilitate: metrici, loguri, alerting</li>
+        </ul>
+        <div class="tags">kubernetes · openshift · rancher · eks · aks · argocd · helm · prometheus</div>
+      </article>
+      <article class="card reveal" id="linux">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 9l3 2.5L7 14M12 14h5M8 21h8"/></svg></div>
+        <h3>Administrare servere Linux</h3>
+        <p>Servere stabile, securizate și actualizate — automatizate cu Ansible, monitorizate permanent, documentate complet.</p>
+        <ul>
+          <li>Hardening conform CIS și patch management</li>
+          <li>Automatizare cu Ansible și Terraform</li>
+          <li>Virtualizare: VMware, Proxmox, KVM</li>
+          <li>Troubleshooting de performanță și incidente</li>
+        </ul>
+        <div class="tags">rhel · rocky · ubuntu · debian · ansible · terraform · systemd</div>
+      </article>
+      <article class="card reveal" id="securitate">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div>
+        <h3>Securitate & conformitate</h3>
+        <p>Transformăm regulile scrise în reguli aplicate automat: ce nu respectă politica nu ajunge în producție, iar secretele nu stau în cod.</p>
+        <ul>
+          <li>Policy-as-code și controlul admiterii în cluster</li>
+          <li>Gestiunea centralizată a secretelor și certificatelor</li>
+          <li>Lanț de livrare verificat: imagini scanate și semnate</li>
+          <li>Pregătire pentru audit: NIS2, DORA, ISO 27001, GDPR</li>
+        </ul>
+        <div class="tags">vault · kyverno · falco · trivy · cert-manager · external-secrets</div>
+      </article>
+      <article class="card reveal" id="enablement">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M16 4.5a3.2 3.2 0 010 6.3M18 14.3c1.8.8 3 2.6 3 4.7"/></svg></div>
+        <h3>Enablement pentru echipa ta</h3>
+        <p>Evaluăm nivelul actual, lucrăm cot la cot pe tichete reale și livrăm training structurat — scopul nostru e ca echipa ta să devină autonomă.</p>
+        <ul>
+          <li>Evaluare de maturitate DevOps / DBA</li>
+          <li>Lucru în pereche pe incidente și proiecte reale</li>
+          <li>Workshop-uri PostgreSQL, Kubernetes și Linux</li>
+          <li>Runbook-uri și documentație predate echipei</li>
+        </ul>
+        <div class="tags">evaluare · pairing · workshop · runbook-uri · handover</div>
+      </article>
+      <article class="card card-dark reveal" id="managed">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-7 4 14 3-7h4"/></svg></div>
+        <h3>Managed services 24/7</h3>
+        <p>Preluăm operarea zilnică: monitorizare permanentă, gardă pentru incidente, patching planificat și raport lunar de stare.</p>
+        <ul>
+          <li>Inginer de gardă pe incidentele critice</li>
+          <li>SLA cu timpi de răspuns asumați contractual</li>
+          <li>Capacity planning și optimizare de costuri</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary">Solicită o ofertă <span class="arrow">→</span></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- MODELE DE COLABORARE -->
+<section class="band" id="colaborare" aria-labelledby="col-title">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><span class="eyebrow">Modele de colaborare</span><h2 id="col-title">Flexibil, pe tot ciclul plan – build – run.</h2></div>
+      <p>De la un singur expert alături de echipa ta, până la preluarea completă a operării. Alegi modelul potrivit realității tale.</p>
+    </div>
+    <div class="models">
+      <div class="model reveal"><span class="num">/01</span><h3>Managed services</h3><p>Preluăm operarea bazelor de date, a clusterelor și a serverelor, cu monitorizare 24/7 și SLA.</p></div>
+      <div class="model reveal"><span class="num">/02</span><h3>Proiecte cu livrabile</h3><p>Implementări, migrări și modernizări cu scop fix, termene clare și responsabilitate asumată.</p></div>
+      <div class="model reveal"><span class="num">/03</span><h3>Extindere de echipă</h3><p>DBA, inginer Kubernetes sau Linux integrat în echipa ta, pe perioada de care ai nevoie.</p></div>
+      <div class="model reveal"><span class="num">/04</span><h3>Consultanță & training</h3><p>Evaluări, pair-programming pe probleme reale și training, până când echipa ta merge singură.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- AUDIT -->
+<section class="section" id="audit" aria-labelledby="audit-title">
+  <div class="container">
+    <div class="audit reveal">
+      <div>
+        <span class="eyebrow">Audit cu preț fix</span>
+        <h2 id="audit-title">Află exact unde e riscul — înainte să devină incident.</h2>
+        <p>Un audit read-only al bazelor de date, clusterelor Kubernetes sau serverelor Linux: performanță, backup și recuperare, securitate, configurare și capacitate. Primești un raport cu constatări ordonate după risc și un plan de remediere pe care echipa ta îl poate executa.</p>
+        <a href="#contact" class="btn btn-primary">Cere oferta de audit <span class="arrow">→</span></a>
+      </div>
+      <div class="audit-kpis">
+        <div class="kpi"><strong>10 zile</strong><span>lucrătoare, de la kick-off la raport</span></div>
+        <div class="kpi"><strong>Read-only</strong><span>acces doar pentru citire, fără intervenții</span></div>
+        <div class="kpi"><strong>Preț fix</strong><span>știi costul înainte să începem</span></div>
+        <div class="kpi"><strong>+ 1 sesiune</strong><span>de prezentare a constatărilor cu echipa ta</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DE CE NOI -->
+<section class="section" id="de-ce" style="padding-top:0" aria-labelledby="why-title">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><span class="eyebrow">De ce OpsDots</span><h2 id="why-title">Pentru medii în care „merge și așa” nu e o opțiune.</h2></div>
+    </div>
+    <div class="why">
+      <div class="why-item reveal"><span class="n">1</span><div><h3>Experiență, nu ierarhie</h3><p>Inginerul care face evaluarea este același care implementează și operează. Fără account manageri între tine și cel care rezolvă problema.</p></div></div>
+      <div class="why-item reveal"><span class="n">2</span><div><h3>Disciplină de mediu reglementat</h3><p>Change management, audit trail, documentație și conformitate (GDPR, NIS2, DORA) sunt punctul de plecare, nu un extra.</p></div></div>
+      <div class="why-item reveal"><span class="n">3</span><div><h3>Datele tale, protejate</h3><p>Backup-urile sunt testate prin restore real, iar planurile de disaster recovery sunt exersate, nu doar scrise.</p></div></div>
+      <div class="why-item reveal"><span class="n">4</span><div><h3>Automatizare și transparență</h3><p>Infrastructure as code, runbook-uri și rapoarte lunare — știi oricând ce s-a schimbat, de ce și cine a făcut-o.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCES -->
+<section class="section" style="background:var(--bg-soft)" aria-labelledby="proc-title">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><span class="eyebrow">Cum lucrăm</span><h2 id="proc-title">De la prima discuție la operare stabilă.</h2></div>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><h3>Discuție tehnică</h3><p>30 de minute, gratuit, cu un inginer. Înțelegem contextul, constrângerile și prioritățile.</p></div>
+      <div class="step reveal"><h3>Evaluare</h3><p>Analizăm sistemele existente și identificăm riscurile, blocajele și oportunitățile.</p></div>
+      <div class="step reveal"><h3>Implementare</h3><p>Livrăm iterativ, cu change management, documentație și transfer de cunoștințe.</p></div>
+      <div class="step reveal"><h3>Operare & îmbunătățire</h3><p>Monitorizare, suport și optimizare continuă, cu rapoarte clare de stare.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRII -->
+<section class="section" aria-labelledby="ind-title">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><span class="eyebrow">Industrii</span><h2 id="ind-title">Infrastructură pentru sectoare în care datele contează.</h2></div>
+      <p>Lucrăm cu organizații pentru care disponibilitatea și integritatea datelor sunt critice.</p>
+    </div>
+    <div class="inds">
+      <div class="ind reveal"><h3>Financiar & bancar</h3><p>Conformitate DORA, audit și trasabilitate</p></div>
+      <div class="ind reveal"><h3>E-commerce & retail</h3><p>Trafic de vârf, latență mică</p></div>
+      <div class="ind reveal"><h3>Sănătate</h3><p>Date sensibile, disponibilitate continuă</p></div>
+      <div class="ind reveal"><h3>Telecom & energie</h3><p>Volume mari, infrastructură critică</p></div>
+      <div class="ind reveal"><h3>Software & SaaS</h3><p>Platforme scalabile pe Kubernetes</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEHNOLOGII -->
+<section class="section" style="padding-top:0" aria-labelledby="tech-title">
+  <div class="container">
+    <div class="section-head reveal" style="justify-content:center;text-align:center">
+      <div><span class="eyebrow">Tehnologii</span><h2 id="tech-title" style="margin-inline:auto">Stack-ul pe care îl operăm zilnic.</h2></div>
+    </div>
+    <div class="tech reveal">
+      <span>PostgreSQL</span><span>MySQL</span><span>Percona</span><span>MariaDB</span><span>MongoDB</span><span>Redis</span><span>Kubernetes</span><span>OpenShift</span><span>Rancher</span><span>Docker</span><span>Helm</span><span>ArgoCD</span><span>Red Hat</span><span>Ubuntu</span><span>Debian</span><span>Ansible</span><span>Terraform</span><span>Prometheus</span><span>Grafana</span><span>Vault</span><span>Proxmox</span><span>VMware</span>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq" style="background:var(--bg-soft)" aria-labelledby="faq-title">
+  <div class="container">
+    <div class="section-head reveal" style="justify-content:center;text-align:center">
+      <div><span class="eyebrow">Întrebări frecvente</span><h2 id="faq-title" style="margin-inline:auto">Ce ne întreabă clienții.</h2></div>
+    </div>
+    <div class="faq reveal">
+      <details open><summary>Ce servicii oferă OpsDots?</summary><p>Administrare baze de date (DBA), proiectarea și operarea platformelor Kubernetes și administrare servere Linux — sub formă de proiecte, audit cu preț fix, extindere de echipă sau managed services 24/7.</p></details>
+      <details><summary>Ce baze de date administrați?</summary><p>PostgreSQL, MySQL, Percona Server for MySQL, MariaDB, MongoDB și Redis — inclusiv replicare, clustere de înaltă disponibilitate (Patroni, Percona XtraDB Cluster, Galera, MySQL Group Replication), backup și disaster recovery.</p></details>
+      <details><summary>Lucrați cu Kubernetes on-premise sau doar în cloud?</summary><p>Ambele. Construim și operăm clustere on-premise (bare metal, VMware, Proxmox), în cloud (EKS, AKS, GKE) și hibrid, inclusiv medii izolate de internet (air-gapped).</p></details>
+      <details><summary>Oferiți suport 24/7?</summary><p>Da. Prin pachetul de managed services, sistemele sunt monitorizate permanent, iar incidentele critice sunt preluate de un inginer de gardă conform SLA-ului agreat.</p></details>
+      <details><summary>Unde activați?</summary><p>Avem sediul în România și lucrăm cu clienți din România și din Uniunea Europeană, la distanță sau la sediul clientului.</p></details>
+      <details><summary>Cum începe o colaborare?</summary><p>Cu o discuție tehnică gratuită de 30 de minute, urmată de o propunere: un audit cu durată fixă, un proiect cu livrabile clare sau un contract de managed services.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact" aria-labelledby="contact-title">
+  <div class="container">
+    <div class="contact reveal">
+      <div>
+        <span class="eyebrow">Contact</span>
+        <h2 id="contact-title">Spune-ne despre infrastructura ta.</h2>
+        <p>Fie că planifici o migrare, pregătești un audit sau ai nevoie de cineva care să preia operarea — prima discuție este gratuită și tehnică.</p>
+        <div class="contact-info">
+          <a href="mailto:contact@opsdots.ro"><span aria-hidden="true">✉</span> contact@opsdots.ro</a>
+          <a href="https://opsdots.ro/"><span aria-hidden="true">◎</span> București, România</a>
+        </div>
+      </div>
+      <form id="contact-form" novalidate>
+        <label>Nume<input name="name" autocomplete="name" required></label>
+        <label>Companie<input name="company" autocomplete="organization"></label>
+        <label>Email de serviciu<input type="email" name="email" autocomplete="email" required></label>
+        <label>Interes
+          <select name="interest">
+            <option>Administrare baze de date</option>
+            <option>Platforme Kubernetes</option>
+            <option>Administrare Linux</option>
+            <option>Audit cu preț fix</option>
+            <option>Managed services 24/7</option>
+            <option>Altceva</option>
+          </select>
+        </label>
+        <label class="full">La ce lucrezi?<textarea name="message" required></textarea></label>
+        <button class="btn btn-primary" type="submit">Trimite mesajul <span class="arrow">→</span></button>
+        <p class="form-note">Formularul deschide aplicația ta de email cu mesajul precompletat. Datele nu sunt stocate pe site.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <a href="index.html" class="logo" aria-label="OpsDots">
+          <svg width="30" height="30" viewBox="0 0 34 34" aria-hidden="true"><circle cx="7" cy="17" r="5" fill="#0098C3"/><circle cx="17" cy="17" r="5" fill="#0B2532"/><circle cx="27" cy="17" r="5" fill="#0098C3" opacity=".55"/></svg>
+          <span>ops<b>dots</b></span>
+        </a>
+        <p style="max-width:340px;margin-top:16px">Administrare baze de date, platforme Kubernetes și servere Linux pentru companii din România și Uniunea Europeană.</p>
+      </div>
+      <div><h4>Servicii</h4><ul><li><a href="#dba">Baze de date (DBA)</a></li><li><a href="#kubernetes">Kubernetes</a></li><li><a href="#linux">Linux</a></li><li><a href="#securitate">Securitate</a></li><li><a href="#audit">Audit</a></li></ul></div>
+      <div><h4>Companie</h4><ul><li><a href="#de-ce">De ce OpsDots</a></li><li><a href="#colaborare">Colaborare</a></li><li><a href="#faq">Întrebări frecvente</a></li><li><a href="#contact">Contact</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li><a href="mailto:contact@opsdots.ro">contact@opsdots.ro</a></li><li>București, România</li></ul></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="y">2026</span> OpsDots · <!-- TODO: denumire SRL · CUI · Nr. Reg. Com. --> Toate drepturile rezervate.</span>
+      <span><a href="privacy.html">Politica de confidențialitate</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/main.js" defer></script>
+</body>
 </html>
