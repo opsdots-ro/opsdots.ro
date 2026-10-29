@@ -7,7 +7,7 @@ OpsDots (opsdots.ro) is a Romanian IT services company based in Bucharest, speci
 ## Servicii / Services
 
 - **Administrare baze de date (DBA)**: PostgreSQL, MySQL, Percona Server for MySQL, Percona XtraDB Cluster, MariaDB, MongoDB, Redis. Optimizare performanță, replicare și înaltă disponibilitate (Patroni, Percona XtraDB Cluster, Galera, MySQL Group Replication), backup și PITR cu teste de restore, upgrade-uri de versiune, migrări (ex. MySQL → Percona Server sau PostgreSQL).
-- **Platforme Kubernetes**: design, implementare, upgrade și operare clustere on-premise (bare metal, VMware, Proxmox), cloud (EKS, AKS, GKE) și hibrid, inclusiv air-gapped. GitOps (ArgoCD), Helm, CI/CD, observabilitate (Prometheus, Grafana), OpenShift și Rancher.
+- **Platforme Kubernetes**: design, implementare, upgrade și operare clustere on-premise (bare metal, VMware, Proxmox), cloud (EKS, AKS, GKE) și hibrid, inclusiv air-gapped. GitOps (FluxCD, ArgoCD), Helm, CI/CD, observabilitate (Prometheus, Grafana), OpenShift și Rancher.
 - **Administrare servere Linux**: RHEL, Rocky Linux, Ubuntu, Debian. Hardening CIS, patch management, automatizare cu Ansible și Terraform, virtualizare (VMware, Proxmox, KVM), troubleshooting.
 - **Securitate și conformitate**: policy-as-code (Kyverno), HashiCorp Vault, gestiune secrete și certificate, imagini scanate și semnate, pregătire audit NIS2, DORA, ISO 27001, GDPR.
 - **Enablement și training**: evaluare de maturitate DevOps/DBA, lucru în pereche, workshop-uri, runbook-uri.
