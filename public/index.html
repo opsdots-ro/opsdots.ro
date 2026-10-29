@@ -384,9 +384,9 @@
         </div>
       </div>
       <form id="contact-form" novalidate>
-        <label>Nume<input name="name" autocomplete="name" required></label>
-        <label>Companie<input name="company" autocomplete="organization"></label>
-        <label>Email de serviciu<input type="email" name="email" autocomplete="email" required></label>
+        <label>Nume<input name="name" autocomplete="name" required minlength="2" maxlength="120"></label>
+        <label>Companie<input name="company" autocomplete="organization" maxlength="160"></label>
+        <label>Email de serviciu<input type="email" name="email" autocomplete="email" required maxlength="200"></label>
         <label>Interes
           <select name="interest">
             <option>Administrare baze de date</option>
@@ -398,7 +398,7 @@
           </select>
         </label>
         <label class="hp" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"></label>
-        <label class="full">La ce lucrezi?<textarea name="message" required></textarea></label>
+        <label class="full">La ce lucrezi?<textarea name="message" required minlength="10" maxlength="5000"></textarea></label>
         <button class="btn btn-primary" type="submit">Trimite mesajul <span class="arrow">→</span></button>
         <div id="ts" class="full"></div>
         <p class="form-status full" role="status" aria-live="polite"></p>

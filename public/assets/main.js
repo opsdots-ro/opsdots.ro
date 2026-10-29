@@ -6,13 +6,13 @@
      invalid:'Please check the highlighted fields (name, a valid email and a message of at least 10 characters).',
      rate:'Too many attempts. Please wait a minute and try again.',
      captcha:'Please complete the anti-spam check and try again.',
-     fail:'The message could not be sent. Opening your email app instead…'}:
+     fail:'The message could not be sent right now.',offline:'The form only sends from the live site (www.opsdots.ro).',viaMail:'Send it by email instead →'}:
     {n:'Nume',c:'Companie',e:'Email',i:'Interes',subj:'Cerere ofertă — ',
      sending:'Se trimite…',ok:'Mulțumim! Mesajul a fost trimis — revenim cu un răspuns în cel mult o zi lucrătoare.',
      invalid:'Verifică câmpurile marcate (nume, un email valid și un mesaj de minimum 10 caractere).',
      rate:'Prea multe încercări. Te rugăm să aștepți un minut și să încerci din nou.',
      captcha:'Te rugăm să completezi verificarea anti-spam și să încerci din nou.',
-     fail:'Mesajul nu a putut fi trimis. Deschidem aplicația ta de email…'};
+     fail:'Mesajul nu a putut fi trimis momentan.',offline:'Formularul trimite doar de pe site-ul publicat (www.opsdots.ro).',viaMail:'Trimite-l prin email →'};
 
   // meniu mobil
   const b=document.querySelector('.burger'),m=document.getElementById('menu');
@@ -36,11 +36,17 @@
   const online=location.protocol.startsWith('http');
   let tsWidget=null;
 
-  const say=(msg,kind)=>{ if(!status)return; status.textContent=msg||''; status.dataset.kind=kind||''; };
+  const say=(msg,kind,d)=>{
+    if(!status)return;
+    status.textContent=msg||''; status.dataset.kind=kind||'';
+    if(d){ // link opțional spre aplicația de email, cu mesajul precompletat
+      const a=document.createElement('a'); a.href=mailtoUrl(d); a.textContent=' '+L.viaMail; status.appendChild(a);
+    }
+  };
 
-  const mailto=d=>{
+  const mailtoUrl=d=>{
     const body=`${L.n}: ${d.name}\n${L.c}: ${d.company}\n${L.e}: ${d.email}\n${L.i}: ${d.interest}\n\n${d.message}`;
-    location.href=`mailto:contact@opsdots.ro?subject=${encodeURIComponent(L.subj+d.interest)}&body=${encodeURIComponent(body)}`;
+    return `mailto:contact@opsdots.ro?subject=${encodeURIComponent(L.subj+d.interest)}&body=${encodeURIComponent(body)}`;
   };
 
   // Turnstile (se încarcă doar dacă serverul are o cheie configurată)
@@ -58,7 +64,7 @@
     e.preventDefault();
     if(!f.reportValidity())return;
     const d=Object.fromEntries(new FormData(f));
-    if(!online){ mailto(d); return; }
+    if(!online){ say(L.offline,'error',d); return; }
 
     btn.disabled=true; say(L.sending,'info');
     try{
@@ -70,8 +76,8 @@
       else if(res.error==='invalid_fields'){ say(L.invalid,'error'); }
       else if(res.error==='rate_limited'){ say(L.rate,'error'); }
       else if(res.error&&res.error.startsWith('turnstile')){ say(L.captcha,'error'); if(tsWidget!==null)window.turnstile.reset(tsWidget); }
-      else { say(L.fail,'error'); setTimeout(()=>mailto(d),1200); }
-    }catch(err){ say(L.fail,'error'); setTimeout(()=>mailto(d),1200); }
+      else { say(L.fail,'error',d); console.warn('[opsdots] contact failed',r.status,res.error||''); }
+    }catch(err){ say(L.fail,'error',d); console.warn('[opsdots] contact network error',err); }
     finally{ btn.disabled=false; }
   });
 })();

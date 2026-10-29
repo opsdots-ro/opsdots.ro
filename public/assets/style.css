@@ -236,3 +236,4 @@ form{position:relative}
 .form-status[data-kind="error"]{color:#FF9C8A}
 .form-note a{color:#5FD0EE;text-decoration:underline}
 button[disabled]{opacity:.6;cursor:wait}
+.form-status a{color:#5FD0EE;text-decoration:underline;white-space:nowrap}

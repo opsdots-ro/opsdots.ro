@@ -107,15 +107,15 @@ Dacă serverul nu e disponibil (de exemplu local, cu dublu-click), formularul de
 
 ### Configurare (o singură dată)
 
-1. **resend.com → Domains → Add Domain** → `opsdots.ro`, regiunea **EU (Ireland)**.
-   Adaugă în Cloudflare DNS înregistrările afișate (MX și TXT pentru `send`, TXT `resend._domainkey`), cu proxy-ul **oprit** (nor gri).
+1. **resend.com → Domains → Add Domain** → `updates.opsdots.ro` (subdomeniu dedicat emailurilor trimise de site), regiunea **EU (Ireland)**.
+   Adaugă în Cloudflare DNS înregistrările afișate (ex. MX și TXT pentru `send.updates`, TXT `resend._domainkey.updates`), cu proxy-ul **oprit** (nor gri).
    Apasă **Verify** și așteaptă statusul *Verified*, de obicei câteva minute.
    *Opțional, recomandat:* un TXT `_dmarc` cu `v=DMARC1; p=none;`, dacă nu ai deja unul.
-2. **resend.com → API Keys → Create** → permisiune *Sending access*, domeniul `opsdots.ro`. Copiază cheia `re_...`.
+2. **resend.com → API Keys → Create** → permisiune *Sending access*, domeniul `updates.opsdots.ro`. Copiază cheia `re_...`.
 3. **Cloudflare → Workers & Pages → opsdots-ro → Settings → Variables and Secrets → Add**, tip **Secret**:
    - `RESEND_API_KEY` = cheia de la pasul 2
    - `CONTACT_TO` = adresa unde vrei mesajele (mai multe adrese se separă prin virgulă)
-4. Expeditorul e setat în `wrangler.jsonc` → `CONTACT_FROM` (implicit `website@opsdots.ro`). Trebuie să fie pe domeniul verificat.
+4. Expeditorul e setat în `wrangler.jsonc` → `CONTACT_FROM` = `website@updates.opsdots.ro`. Trebuie să fie pe domeniul verificat în Resend. Adresa nu trebuie să existe ca inbox, iar răspunsurile merg la vizitator prin Reply-To.
 5. Redeploy: orice `git push` sau *Deployments → Retry*. Test: trimite un mesaj de pe site.
 
 ### Anti-spam (deja activ)

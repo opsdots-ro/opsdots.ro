@@ -24,7 +24,7 @@
   // Formular de contact (Resend). Secretele NU se pun aici, ci în Dashboard:
   //   RESEND_API_KEY, CONTACT_TO, TURNSTILE_SECRET (opțional) → Settings → Variables and Secrets → type "Secret"
   "vars": {
-    "CONTACT_FROM": "OpsDots Website <website@opsdots.ro>",
+    "CONTACT_FROM": "OpsDots Website <website@updates.opsdots.ro>",   // trebuie să fie pe domeniul verificat în Resend
     "TURNSTILE_SITE_KEY": ""          // opțional: Site Key din Cloudflare Turnstile (e publică)
   },
 
