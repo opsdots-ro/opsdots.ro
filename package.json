@@ -1,0 +1,14 @@
+{
+  "name": "opsdots-ro",
+  "private": true,
+  "description": "opsdots.ro — site static servit de un Cloudflare Worker cu observability",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "logs": "wrangler tail --format pretty",
+    "logs:json": "wrangler tail --format json"
+  },
+  "devDependencies": {
+    "wrangler": "^4.155.0"
+  }
+}

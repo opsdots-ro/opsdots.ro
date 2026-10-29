@@ -1,64 +1,117 @@
 # opsdots.ro
 
-Site static de prezentare OpsDots — administrare baze de date, Kubernetes și Linux.
-Fără build, fără dependențe: HTML + CSS + puțin JS, gata pentru **Cloudflare Pages**.
+Site de prezentare OpsDots (DBA · Kubernetes · Linux), RO + EN.
+Rulează ca **Cloudflare Worker cu static assets** și are **observability** activat (loguri și trasare).
+
+Domeniul principal este **https://www.opsdots.ro**. `opsdots.ro` face redirect 301 spre `www`, păstrând calea și parametrii.
 
 ## Structură
 
 ```
-index.html          pagina principală în română (SEO + JSON-LD: Organization, Services, FAQ)
-en/index.html       versiunea în engleză (hreflang ro/en, JSON-LD în engleză)
-privacy.html        politica de confidențialitate (RO) · en/privacy.html (EN)
-assets/style.css    stiluri comune ambelor limbi
-assets/main.js      meniu, animații, formular (detectează limba paginii)
-404.html            pagina de eroare (Cloudflare Pages o folosește automat)
-robots.txt          permite Google, Bing și crawlerele AI (GPTBot, ClaudeBot, PerplexityBot…)
-sitemap.xml         harta site-ului
-llms.txt            rezumat pentru ChatGPT / Claude / Perplexity (standard llmstxt.org)
-_headers            headere de securitate și cache (Cloudflare Pages)
-_redirects          redirecționări (Cloudflare Pages)
-favicon.svg, site.webmanifest
-assets/             og-image.png / og-image-en.png (1200×630), apple-touch-icon.png, icon-512.png
+public/                 ← tot ce e servit public (site-ul)
+  index.html            română
+  en/index.html         engleză
+  privacy.html, en/privacy.html
+  404.html              pagina de eroare
+  assets/               style.css, main.js, imagini
+  robots.txt, sitemap.xml, llms.txt, site.webmanifest, favicon.svg
+  _headers, _redirects  headere și redirecționări (aplicate de Cloudflare)
+src/worker.js           Worker: servește public/, loghează fiecare cerere, redirect non-www → www, /healthz
+wrangler.jsonc          configurația Cloudflare (assets, domenii, observability)
+package.json            comenzi: npm run dev / deploy / logs
 ```
 
-## Deploy pe Cloudflare Pages (din GitHub)
+Local poți deschide direct `public/index.html` în browser, cu dublu-click.
 
-1. Urcă folderul într-un repo GitHub (ex. `opsdots.ro`).
-2. Cloudflare Dashboard → **Workers & Pages → Create → Pages → Connect to Git** → alege repo-ul.
-3. Build settings: **Framework preset: None**, **Build command:** gol, **Build output directory:** `/`.
-4. După deploy: **Custom domains → Set up a domain** → `opsdots.ro` (și `www.opsdots.ro`, cu redirect spre domeniul principal).
+---
 
-## ⚠️ Important ca site-ul să fie găsit de ChatGPT / Claude
+## Deploy
 
-Cloudflare **blochează implicit crawlerele AI** pe domeniile noi. Verifică:
+### Prima dată (o singură configurare)
 
-- **Security → Bots → „Block AI bots”** → setează pe **Do not block (allow)**.
-- **AI Crawl Control** (fostul AI Audit) → asigură-te că GPTBot, OAI-SearchBot, ClaudeBot, Claude-SearchBot, PerplexityBot sunt **Allowed**.
-- **Managed robots.txt** → dezactivat, altfel Cloudflare suprascrie `robots.txt` din repo cu reguli de blocare.
-- Bot Fight Mode poate și el încurca unele crawlere — dacă vezi probleme, dezactivează-l.
+**0. Pregătește DNS-ul în Cloudflare** (zona `opsdots.ro` trebuie să fie în același cont):
+- În *DNS → Records*, **șterge** înregistrările existente pentru `opsdots.ro` și `www` (A / AAAA / CNAME, de exemplu cele spre GitHub Pages).
+  Worker-ul își creează singur înregistrările și certificatul SSL. Dacă le găsește deja, deploy-ul dă eroare.
+- Dacă ai creat înainte un proiect **Pages** pentru site, șterge-l sau scoate-i domeniul custom, ca să nu se bată cap în cap.
 
-## După lansare
+**1. Conectează repo-ul la Cloudflare (Workers Builds):**
+1. Cloudflare Dashboard → **Workers & Pages → Create → Workers → Import a repository**.
+2. Alege GitHub → `opsdots-ro/opsdots.ro`, branch `main`.
+3. Setări build:
+   - **Project name:** `opsdots-ro` (trebuie să fie identic cu `name` din `wrangler.jsonc`)
+   - **Build command:** gol
+   - **Deploy command:** `npx wrangler deploy` (implicit)
+   - **Root directory:** `/`
+4. **Save and Deploy**.
 
-- **Google Search Console**: adaugă domeniul (verificare prin DNS, direct din Cloudflare) și trimite `https://opsdots.ro/sitemap.xml`.
-- **Bing Webmaster Tools**: importă din Search Console — Bing alimentează ChatGPT Search și Copilot.
-- Validează datele structurate: https://search.google.com/test/rich-results și https://validator.schema.org
-- Profil **LinkedIn** de companie + **Google Business Profile** cu link spre site — modelele AI se bazează mult pe mențiuni externe.
+Cloudflare citește `wrangler.jsonc`, publică `public/`, atașează `opsdots.ro` + `www.opsdots.ro` și activează observability.
 
-## De completat (TODO)
+### De acum înainte (la fiecare modificare)
 
-- Denumirea firmei, CUI și Nr. Reg. Com. în footer (`index.html`, `en/index.html`) și în `privacy.html`, `en/privacy.html`.
-- Telefon / adresă exactă, dacă vrei să apară (și în JSON-LD).
-- Verifică cifrele din bara de statistici (24/7, 99.9%, 15 min P1) și din secțiunea de audit (10 zile, preț fix) — sunt angajamente comerciale; ajustează-le la ce oferi realmente.
-- Linkuri spre LinkedIn etc. în footer și în JSON-LD (`"sameAs": [...]`).
-- La fiecare modificare de conținut, actualizează `<lastmod>` în `sitemap.xml`.
+```bash
+git add -A
+git commit -m "descrierea modificării"
+git push
+```
+
+Fiecare push pe `main` declanșează automat un deploy, de obicei în sub un minut. Statusul se vede în
+*Workers & Pages → opsdots-ro → Deployments*, iar commit-ul primește o bifă ✔ pe GitHub.
+Pe un alt branch (ex. `test`) primești un **preview URL** separat, fără să afectezi site-ul live.
+
+### Alternativ: deploy manual din Terminal
+
+```bash
+npm install          # o singură dată
+npx wrangler login   # o singură dată, deschide browserul
+npm run deploy
+```
+
+---
+
+## Observability
+
+Dashboard → **Workers & Pages → opsdots-ro → Observability**.
+
+| Ce | Unde | Detalii |
+|---|---|---|
+| **Logs** | tab *Logs* / *Events* | Un eveniment JSON per cerere: `path`, `status`, `duration_ms`, `country`, `visitor_kind`, `bot_name`, `referer_host`… |
+| **Traces** | tab *Traces* | 10% din cereri (`head_sampling_rate: 0.1` în `wrangler.jsonc`) |
+| **Metrici** | tab *Metrics* | cereri, erori, CPU time, durată |
+| **Live tail** | Terminal: `npm run logs` | loguri în timp real |
+
+**Câmpul `visitor_kind`** clasifică fiecare vizitator: `human`, `search` (Googlebot, Bingbot…), `ai` (GPTBot, ClaudeBot,
+PerplexityBot…), `preview` (LinkedIn, Slack, WhatsApp), `bot`, `unknown`. Așa vezi dacă ChatGPT și Claude chiar îți citesc site-ul.
+
+Interogări utile în *Query Builder*:
+- `visitor_kind = "ai"`, grupat după `bot_name` → ce crawlere AI au vizitat site-ul
+- `level = "warn"`, grupat după `path` → linkuri moarte (404)
+- `level = "error"` → erori 5xx (ar trebui să fie 0)
+- `visitor_kind = "human"`, grupat după `country` sau `referer_host` → de unde vin vizitatorii
+
+**Limite pe planul gratuit:** 200.000 de evenimente pe zi (loguri + span-uri de trace), retenție 3 zile; 100.000 de cereri Worker pe zi.
+Pentru mai mult trafic scazi `head_sampling_rate` (ex. `0.2` = 20%).
+
+**Uptime:** `https://www.opsdots.ro/healthz` răspunde cu `{"status":"ok"}`. Îl poți pune într-un monitor extern
+(UptimeRobot, Better Stack, Grafana Synthetic) sau în *Cloudflare → Notifications → Health Checks*.
+
+**Web Analytics (opțional, fără cookies):** *Analytics & Logs → Web Analytics → Add a site* → `www.opsdots.ro`, cu injectare automată.
+
+---
+
+## SEO și crawlere AI
+
+- `robots.txt` permite Google, Bing și crawlerele AI; `llms.txt` oferă un rezumat pentru LLM-uri; datele structurate sunt în fiecare pagină.
+- ⚠️ În Cloudflare: **Security → Bots** → dezactivează *Block AI bots* și *Managed robots.txt*. Altfel Cloudflare blochează GPTBot și ClaudeBot.
+- Google Search Console + Bing Webmaster Tools: adaugă `https://www.opsdots.ro` și trimite `https://www.opsdots.ro/sitemap.xml`.
 
 ## Limbi
 
-- Română la `/`, engleză la `/en/`. Selectorul RO/EN e în header.
-- Când modifici un text, modifică-l în **ambele** fișiere (`index.html` și `en/index.html`), inclusiv în blocul JSON-LD.
-- Paginile sunt legate prin `hreflang`, deci Google afișează automat versiunea potrivită limbii utilizatorului.
+Română la `/`, engleză la `/en/`. Când schimbi un text, schimbă-l în **ambele** fișiere (`public/index.html` și `public/en/index.html`), inclusiv în blocul JSON-LD.
 
-## Formular de contact
+## De completat (TODO)
 
-Formularul deschide clientul de email al vizitatorului (`mailto:`) — nu necesită backend.
-Dacă vrei trimitere directă, se poate adăuga ulterior o Cloudflare Pages Function + Turnstile.
+- Denumirea firmei, CUI, Nr. Reg. Com. în footer și în paginile de confidențialitate.
+- Verifică cifrele (99.9%, 15 min P1, audit 10 zile) — sunt angajamente comerciale.
+- Linkuri LinkedIn etc. în footer și în JSON-LD (`"sameAs"`).
+- Actualizează `<lastmod>` în `public/sitemap.xml` la modificări de conținut.
+- Formular de contact cu trimitere directă (Resend + Turnstile) — în lucru.

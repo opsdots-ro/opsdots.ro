@@ -50,4 +50,4 @@ Allow: /
 User-agent: DuckAssistBot
 Allow: /
 
-Sitemap: https://opsdots.ro/sitemap.xml
+Sitemap: https://www.opsdots.ro/sitemap.xml

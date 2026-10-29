@@ -20,13 +20,13 @@ Financiar-bancar, e-commerce și retail, sănătate, telecom și energie, softwa
 
 ## Contact
 
-- Website: https://opsdots.ro/
+- Website: https://www.opsdots.ro/
 - Email: contact@opsdots.ro
 - Locație: București, România
 - Prima discuție tehnică (30 min) este gratuită.
 
 ## Pagini / Pages
 
-- [Pagina principală (română)](https://opsdots.ro/): servicii, modele de colaborare, audit, întrebări frecvente, contact
-- [Homepage (English)](https://opsdots.ro/en/): services, engagement models, audit, FAQ, contact
-- [Politica de confidențialitate](https://opsdots.ro/privacy.html) · [Privacy policy](https://opsdots.ro/en/privacy.html)
+- [Pagina principală (română)](https://www.opsdots.ro/): servicii, modele de colaborare, audit, întrebări frecvente, contact
+- [Homepage (English)](https://www.opsdots.ro/en/): services, engagement models, audit, FAQ, contact
+- [Politica de confidențialitate](https://www.opsdots.ro/privacy) · [Privacy policy](https://www.opsdots.ro/en/privacy)

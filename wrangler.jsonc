@@ -1,0 +1,37 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "opsdots-ro",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-10-01",
+  "workers_dev": true,
+
+  // Domeniul (opsdots.ro și www) — Cloudflare creează automat DNS-ul și certificatul
+  "routes": [
+    { "pattern": "opsdots.ro", "custom_domain": true },
+    { "pattern": "www.opsdots.ro", "custom_domain": true }
+  ],
+
+  // Site-ul static
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash",
+    // Fiecare cerere trece prin Worker → apare în loguri
+    "run_worker_first": true
+  },
+
+  // Observability: Workers Logs + Traces (Dashboard → Workers & Pages → opsdots-ro → Observability)
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1,          // 100% din cereri logate (free: 200k evenimente/zi, 3 zile retenție)
+    "logs": {
+      "enabled": true,
+      "invocation_logs": true
+    },
+    "traces": {
+      "enabled": true,
+      "head_sampling_rate": 0.1       // 10% din cereri trasate (spans se contorizează ca evenimente de log)
+    }
+  }
+}
